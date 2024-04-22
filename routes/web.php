@@ -3,9 +3,13 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'inicio')->name('inicio');
+Route::view('/comics', 'inicio')->name('showAllComics');
+Route::view('/carrito', 'inicio')->name('verCarrito');
+Route::view('/logout', 'inicio')->name('cerrarSesion');
+Route::view('/login', 'inicio')->name('login');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
