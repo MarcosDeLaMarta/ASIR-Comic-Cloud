@@ -2,14 +2,15 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ComicController;
 
 Route::view('/', 'inicio')->name('inicio');
-Route::view('/comics', 'inicio')->name('showAllComics');
+Route::get('comics', [ComicController::class, 'index'])->name('comics');
 Route::view('/carrito', 'inicio')->name('verCarrito');
 Route::view('/logout', 'inicio')->name('cerrarSesion');
 Route::view('/login', 'inicio')->name('login');
-
-
+Route::view('añadir', 'inicio')->name('addToCart');
+Route::view('detalles', 'inicio')->name('verDetalleProducto');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

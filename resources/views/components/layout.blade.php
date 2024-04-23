@@ -14,7 +14,7 @@
 <link href="{{ asset('views/css/style.css') }}" rel="stylesheet" />
 </head>
 <body>
-    @include('partials.nav')
+    <x-nav />
     
     {{ $slot }}
 </body>
