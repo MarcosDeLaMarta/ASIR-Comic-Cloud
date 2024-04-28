@@ -13,7 +13,7 @@
                         <li class="nav-item mt-2"><input class="form-control " type="search" placeholder="Buscar" aria-label="Search"></li>    
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#"><i class="bi bi-person-circle"></i> Perfil</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('comics') }}"><i class="bi bi-list-nested"></i> Productos</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('verCarrito') }}"><i class="bi bi-bag"></i> Cesta</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('verCarrito') }}"><i class="bi bi-bag"></i></a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('cerrarSesion') }}"><i class="bi bi-box-arrow-left"></i> Cerrar Sesión </a></li>
                     </ul>
                 </div>
@@ -32,7 +32,7 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('login') }}"><i class="bi bi-person-circle"></i> Iniciar sesión</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('comics') }}"><i class="bi bi-list-nested"></i> Productos</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('verCarrito') }}"><i class="bi bi-bag"></i> Cesta</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('verCarrito') }}"><i class="bi bi-bag "></i>  </a></li>
                     </ul>
                 </div>
             </div>

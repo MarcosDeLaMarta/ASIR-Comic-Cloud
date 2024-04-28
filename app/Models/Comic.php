@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Comic extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'id_comic'; // Nombre de la clave primaria
     
     protected $fillable = [
         'titulo',
@@ -17,4 +19,5 @@ class Comic extends Model
         'genero',
         'descripcion',
     ];
+
 }

@@ -13,4 +13,10 @@ class ComicController extends Controller
 
         return view('comics', ['comics' => $comics]); // Pasamos los cómics a la vista
     }
+    public function show($id)
+    {
+        $comic = Comic::find($id);
+
+        return view('producto', ['comic' => $comic]);
+    }
 }

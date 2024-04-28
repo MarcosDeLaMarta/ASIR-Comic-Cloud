@@ -10,7 +10,8 @@ Route::view('/carrito', 'inicio')->name('verCarrito');
 Route::view('/logout', 'inicio')->name('cerrarSesion');
 Route::view('/login', 'inicio')->name('login');
 Route::view('añadir', 'inicio')->name('addToCart');
-Route::view('detalles', 'inicio')->name('verDetalleProducto');
+Route::get('producto/{id}', [ComicController::class, 'show'])->name('producto');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

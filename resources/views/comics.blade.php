@@ -8,7 +8,7 @@
 
         @foreach ($comics as $comic)
             <div class="card col-xs-12 col-3 my-4 m-5" style="width: 19rem; height: auto;">
-                <a href="{{ route('verDetalleProducto', ['id' => $comic['id_comic']]) }}">
+                <a href="{{ route('producto', ['id' => $comic['id_comic']]) }}">
                     <img src="{{ asset('img/' . $comic['imagen']) }}" class="card-img-top pt-2" alt="..." style="max-width: 18rem;">
                 </a>
                 <div class="card-body">
