@@ -6,12 +6,11 @@ use App\Http\Controllers\ComicController;
 
 Route::view('/', 'inicio')->name('inicio');
 Route::get('comics', [ComicController::class, 'index'])->name('comics');
-Route::view('/carrito', 'inicio')->name('verCarrito');
-Route::view('/logout', 'inicio')->name('cerrarSesion');
-Route::view('/login', 'inicio')->name('login');
+Route::view('carrito', 'inicio')->name('verCarrito');
+Route::view('login', 'inicio')->name('login');
 Route::view('añadir', 'inicio')->name('addToCart');
 Route::get('producto/{id}', [ComicController::class, 'show'])->name('producto');
-
+Route::view('/register', 'inicio')->name('register');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
