@@ -20,9 +20,14 @@
                     <small><span class="font-weight-bold">Peso:</span> 250 gr</small><br>
                     <button class="btn btn-success btn-sm my-2">DISPONIBLE</button>
                     <p class="text-rojo"><span class="tachados">{{ $comic['precio'] }} €</span> {{ $comic['precio'] }} €</p>
-                    <div class="d-grid gap-2 ">
-                        <a href="#" class="btn btn-outline-success"><i class="bi bi-cart-check"></i> Añadir a la cesta</a>
-                    </div>
+                    <form action="{{ route('addToCart', ['id' => $comic->id_comic]) }}" method="POST">
+                        @csrf
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-cart-plus"></i> Añadir a la cesta
+                            </button>
+                        </div>
+                    </form> 
                     <br>
                 </div>
             </div>

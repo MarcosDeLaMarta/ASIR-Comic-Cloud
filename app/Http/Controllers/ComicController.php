@@ -20,3 +20,4 @@ class ComicController extends Controller
         return view('producto', ['comic' => $comic]);
     }
 }
+

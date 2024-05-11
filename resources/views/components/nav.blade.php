@@ -33,10 +33,10 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{route('profile.edit')}}"><i class="bi bi-person-fill"></i> {{ Auth::user()->name }}</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('comics') }}"><i class="bi bi-list-nested"></i> Productos</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{{ route('verCarrito') }}"><i class="bi bi-bag"></i></a></li>
-                    <li class="nav-item mx-0 mx-lg-1">
+                    <li class="nav-item mx-1 mx-lg-1 pt-2">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <button type="submit" class="nav-link py-3 px-0 px-lg-3 rounded" title="Cerrar Sesión">
+                            <button type="submit" class="nav-link py-2 px-1 px-lg-2 border-0 shadow-none rounded" title="Cerrar Sesión">
                                 <i class="bi bi-box-arrow-left"></i>
                             </button>
                         </form>
