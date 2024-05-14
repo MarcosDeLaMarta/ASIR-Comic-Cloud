@@ -25,10 +25,19 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
-        return redirect()->intended(route('comics'));
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+
+        // Verificar el rol del usuario
+        if ($user->rol == 1) {
+            // Redirigir a la vista administrativa
+            return redirect()->route('admin');
+        } else {
+            // Redirigir a la vista de comics
+            return redirect()->route('comics');
+        }
     }
 
     /**

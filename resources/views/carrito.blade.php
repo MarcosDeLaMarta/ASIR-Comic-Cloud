@@ -16,21 +16,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($cart as $detalle)
-                        <tr>
-                            <td>{{ $detalle['comic']->id_comic }}</td>
-                            <td>{{ $detalle['comic']->titulo }}</td>
-                            <td>{{ $detalle['comic']->precio }} €</td>
-                            <td>{{ $detalle['cantidad'] }}</td>
-                            <td>
-                                <form action="{{ route('eliminarDelCarrito', ['idProducto' => $detalle['comic']->id_comic]) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                                </form>                           
-                            </td>
-                        </tr>
-                    @endforeach
+                    @foreach ($cart as $id => $detalle)
+                    <tr>
+                        <td>{{ $detalle['comic']->id_comic }}</td>
+                        <td>{{ $detalle['comic']->titulo }}</td>
+                        <td>{{ $detalle['comic']->precio }} €</td>
+                        <td>{{ $detalle['cantidad'] }}</td>
+                        <td>
+                            <form action="{{ route('eliminarDelCarrito', ['idProducto' => $id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>                           
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
             <br>

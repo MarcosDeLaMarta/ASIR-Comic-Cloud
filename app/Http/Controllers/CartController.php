@@ -20,19 +20,18 @@ class CartController extends Controller
 
         $cantidad = $request->input('cantidad', 1);
 
-        $cart = session()->get('cart', collect()); // Obtener el carrito de la sesión como una colección o una nueva colección si está vacía
+        $cart = session()->get('cart', []); // Obtener el carrito de la sesión como un array asociativo
 
         // Verifica si el cómic ya está en el carrito
-        $existingItem = $cart->firstWhere('comic.id_comic', $id);
-        if ($existingItem) {
+        if (isset($cart[$id])) {
             // Si el cómic ya está en el carrito, aumenta la cantidad
-            $existingItem['cantidad'] += $cantidad;
+            $cart[$id]['cantidad'] += $cantidad;
         } else {
             // Si el cómic no está en el carrito, añádelo
-            $cart->add([
+            $cart[$id] = [
                 'comic' => $comic,
                 'cantidad' => $cantidad,
-            ]);
+            ];
         }
 
         // Guarda los detalles del carrito en la sesión
@@ -40,6 +39,7 @@ class CartController extends Controller
 
         return redirect()->back()->with('success', 'El cómic se ha agregado al carrito.');
     }
+
 
     public function verCarrito()
     {

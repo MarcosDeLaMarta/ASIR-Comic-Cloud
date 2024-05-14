@@ -11,6 +11,11 @@ Route::view('login', 'inicio')->name('login');
 
 Route::view('/register', 'inicio')->name('register');
 
+Route::get('/admin', [ComicController::class, 'admin'])->name('admin');
+
+Route::delete('admin/comics/{id}', [ComicController::class, 'eliminar'])->name('eliminarComic');
+Route::post('admin/comics/add', [ComicController::class, 'crear'])->name('crearComic');
+Route::view('admin/comics', 'addproducto')->name('addproducto');
 
 
 Route::middleware(['web'])->group(function () {
