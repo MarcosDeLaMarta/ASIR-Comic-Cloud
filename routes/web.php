@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::post('comics/{id}/add-to-cart', [CartController::class, 'addToCart'])->name('addToCart');
     Route::get('cart', [CartController::class, 'verCarrito'])->name('verCarrito');
     Route::delete('cart/{idProducto}', [CartController::class, 'eliminarDelCarrito'])->name('eliminarDelCarrito');
+    Route::patch('cart/{idProducto}/update-quantity', [CartController::class, 'actualizarCantidad'])->name('actualizarCantidad');
     Route::post('/realizar-pedido', [CartController::class, 'realizarPedido'])->name('realizarPedido');
 });
 

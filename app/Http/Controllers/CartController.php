@@ -109,4 +109,22 @@ class CartController extends Controller
 
         return redirect()->route('comics')->with('success', 'El pedido ha sido realizado correctamente.');
     }
+
+    public function actualizarCantidad(Request $request, $idProducto)
+    {
+        $cantidad = $request->input('cantidad');
+
+        if ($cantidad < 1) {
+            return response()->json(['success' => false, 'message' => 'La cantidad debe ser al menos 1.']);
+        }
+
+        $cart = session()->get('cart', []);
+
+        if (isset($cart[$idProducto])) {
+            $cart[$idProducto]['cantidad'] = $cantidad;
+            session()->put('cart', $cart);
+        }
+
+        
+    }
 }
