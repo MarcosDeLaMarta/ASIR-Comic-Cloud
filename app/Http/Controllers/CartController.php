@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DetallesPedido;
 use App\Models\Comic;
+use App\Models\Pedido;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 
 class CartController extends Controller
@@ -78,5 +80,33 @@ class CartController extends Controller
         session()->forget('cart');
 
         return redirect()->route('carrito')->with('success', 'El carrito se ha vaciado.');
+    }
+
+    public function realizarPedido(Request $request)
+    {
+        $cart = session()->get('cart', []);
+        $userId = Auth::id();
+
+        if (empty($cart)) {
+            return redirect()->route('carrito')->with('error', 'No hay productos en tu cesta.');
+        }
+
+        $pedido = Pedido::create([
+            'id_usuario' => $userId,
+            'fecha_pedido' => now(),
+            'estado' => 'Pendiente',
+        ]);
+
+        foreach ($cart as $detalle) {
+            DetallesPedido::create([
+                'id_pedido' => $pedido->id_pedido,
+                'id_comic' => $detalle['comic']->id_comic,
+                'cantidad' => $detalle['cantidad'],
+            ]);
+        }
+
+        session()->forget('cart');
+
+        return redirect()->route('comics')->with('success', 'El pedido ha sido realizado correctamente.');
     }
 }

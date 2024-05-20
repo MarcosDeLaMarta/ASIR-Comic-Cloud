@@ -36,7 +36,10 @@
             <br>
             <div class="text-center">
                 <a href="{{ route('comics') }}" class="btn btn-primary">Continuar Comprando</a>
-                <a href="#" class="btn btn-success">Realizar Pedido</a>
+                <form action="{{ route('realizarPedido') }}" method="POST" style="display:inline-block;">
+                    @csrf
+                    <button type="submit" class="btn btn-success">Realizar Pedido</button>
+                </form>
             </div>
         @endif
     </div>

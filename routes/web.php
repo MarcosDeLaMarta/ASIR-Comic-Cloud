@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ComicController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PedidoController;
 
 Route::view('/', 'inicio')->name('inicio');
 
@@ -17,13 +18,22 @@ Route::delete('admin/comics/{id}', [ComicController::class, 'eliminar'])->name('
 Route::post('admin/comics/add', [ComicController::class, 'crear'])->name('crearComic');
 Route::view('admin/comics', 'addproducto')->name('addproducto');
 
-
 Route::middleware(['web'])->group(function () {
     Route::get('comics', [ComicController::class, 'index'])->name('comics');
     Route::get('producto/{id}', [ComicController::class, 'show'])->name('producto');
+});
+
+Route::middleware('auth')->group(function () {
     Route::post('comics/{id}/add-to-cart', [CartController::class, 'addToCart'])->name('addToCart');
     Route::get('cart', [CartController::class, 'verCarrito'])->name('verCarrito');
     Route::delete('cart/{idProducto}', [CartController::class, 'eliminarDelCarrito'])->name('eliminarDelCarrito');
+    Route::post('/realizar-pedido', [CartController::class, 'realizarPedido'])->name('realizarPedido');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('admin/pedidos', [PedidoController::class, 'index'])->name('pedidos.index');
+    Route::patch('admin/pedidos/{id}', [PedidoController::class, 'update'])->name('pedidos.update');
+    Route::delete('admin/pedidos/{id}', [PedidoController::class, 'destroy'])->name('pedidos.destroy');
 });
 
 Route::get('/dashboard', function () {
@@ -37,3 +47,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+

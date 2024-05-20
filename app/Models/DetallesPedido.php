@@ -7,7 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetallesPedido extends Model
 {
-    protected $table = 'detalles_pedido';
+    use HasFactory;
+
+    protected $table = 'detalles_pedido'; 
+
+    protected $primaryKey = 'id_detalle';
+
+    protected $fillable = [
+        'id_pedido',
+        'id_comic',
+        'cantidad',
+    ];
+
+    public function pedido()
+    {
+        return $this->belongsTo(Pedido::class, 'id_pedido');
+    }
 
     public function comic()
     {
