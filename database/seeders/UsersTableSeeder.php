@@ -16,16 +16,23 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name' => 'marcos',
-            'email' => 'marcos@comic.com',
-            'password' => Hash::make('1234'),
-        ]);
+        // Verificar si el usuario 'marcos' ya existe
+        if (!User::where('email', 'marcos@comic.com')->exists()) {
+            User::create([
+                'name' => 'marcos',
+                'email' => 'marcos@comic.com',
+                'password' => Hash::make('1234'),
+            ]);
+        }
 
-        User::create([
-            'name' => 'admin',
-            'email' => 'admin@comic.com',
-            'password' => Hash::make('1234'),
-        ]);
+        // Verificar si el usuario 'admin' ya existe
+        if (!User::where('email', 'admin@comic.com')->exists()) {
+            User::create([
+                'name' => 'admin',
+                'email' => 'admin@comic.com',
+                'password' => Hash::make('1234'),
+                'rol' => '1',
+            ]);
+        }
     }
 }
